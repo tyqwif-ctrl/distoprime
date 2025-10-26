@@ -1,0 +1,454 @@
+/* style.css - Стилизация сайта */
+
+/* ================================================= */
+/* 1. Глобальные стили и сброс (Reset) */
+/* ================================================= */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #343a40;
+    line-height: 1.6;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* ================================================= */
+/* 2. Шапка (Header) и Навигация */
+/* ================================================= */
+
+header {
+    background-color: #343a40;
+    color: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+header h1 a {
+    color: white;
+    text-decoration: none;
+}
+
+.user-status {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-status p {
+    margin: 0;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+/* Общий стиль для кнопок в шапке (button) */
+.button {
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+    white-space: nowrap;
+    color: white;
+}
+
+.button-login {
+    background-color: #007bff;
+}
+.button-login:hover {
+    background-color: #0056b3;
+    text-decoration: none;
+}
+
+.button-register {
+    background-color: #28a745;
+}
+.button-register:hover {
+    background-color: #218838;
+    text-decoration: none;
+}
+
+.button-logout {
+    background-color: #dc3545;
+}
+.button-logout:hover {
+    background-color: #c82333;
+}
+
+
+/* ================================================= */
+/* 3. Поиск (Search Box) - Управляется React */
+/* ================================================= */
+
+.search-box {
+    padding: 15px 40px;
+    background-color: #e9ecef;
+    text-align: center;
+}
+
+#searchInput {
+    padding: 12px 15px;
+    width: 100%;
+    max-width: 500px;
+    border: 1px solid #ced4da;
+    border-radius: 25px;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#searchInput:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+
+/* ================================================= */
+/* 4. Карточки Достопримечательностей (Main Content) */
+/* ================================================= */
+
+.attractions-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 40px 20px;
+    gap: 30px;
+}
+
+.attraction-card {
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    width: 320px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: block;
+    cursor: pointer;
+}
+
+.attraction-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.attraction-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.attraction-card h2 {
+    font-size: 1.3em;
+    color: #007bff;
+    margin: 0 0 5px;
+}
+
+.city {
+    color: #6c757d;
+    font-size: 0.9em;
+    margin: 0 0 10px;
+}
+
+.attraction-card p {
+    font-size: 0.95em;
+    margin-top: 0;
+}
+
+/* ================================================= */
+/* 5. Модальные окна (Details / Form) */
+/* ================================================= */
+
+/* Фон, затемняющий основной контент */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; 
+}
+
+/* Контейнер самого модального окна */
+.modal-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 700px;
+    width: 90%;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+    position: relative;
+    max-height: 90vh; 
+    overflow-y: auto;
+    color: #343a40;
+}
+
+/* Кнопка закрытия */
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: #343a40;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.close-button:hover {
+    opacity: 1;
+}
+
+/* Заголовок в модальном окне */
+.modal-content h2 {
+    color: #007bff;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 2em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Изображение в модальном окне */
+.modal-image-wrapper img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.modal-body p {
+    margin-bottom: 15px;
+    font-size: 1.05em;
+}
+
+/* ================================================= */
+/* 6. Кнопки в карточке */
+/* ================================================= */
+
+.card-footer {
+    padding: 0 15px 15px;
+    display: flex; /* Важно для выравнивания кнопок админа */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.button-details {
+    display: block;
+    padding: 10px 0;
+    background-color: #007bff; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.button-details:hover {
+    background-color: #0056b3;
+}
+
+/* ================================================= */
+/* 7. АДМИН: Кнопка "Добавить новую" */
+/* ================================================= */
+
+.admin-actions {
+    text-align: center;
+    padding: 15px 40px;
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.button-add-new {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    display: inline-block;
+}
+
+.button-add-new:hover {
+    background-color: #218838;
+}
+
+/* ================================================= */
+/* 8. АДМИН: Кнопки в карточке (Редактировать/Удалить) */
+/* ================================================= */
+
+/* Общий стиль для кнопок редактирования/удаления (маленькие) */
+.button-edit, .button-delete {
+    padding: 8px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    line-height: 1;
+    font-size: 1.1em;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.button-edit {
+    background-color: #ffc107;
+    color: #343a40;
+}
+.button-edit:hover {
+    background-color: #e0a800;
+}
+
+.button-delete {
+    background-color: #dc3545;
+    color: white;
+}
+.button-delete:hover {
+    background-color: #c82333;
+}
+
+/* ================================================= */
+/* 9. Стили форм CRUD (в модальном окне) */
+/* ================================================= */
+
+.attraction-form label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+.attraction-form input,
+.attraction-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.attraction-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.button-save {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-top: 20px;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.button-save:hover {
+    background-color: #0056b3;
+}
+
+/* ================================================= */
+/* 10. Стили форм Входа/Регистрации и Сообщений */
+/* ================================================= */
+
+.container {
+    max-width: 450px;
+    margin: 50px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.container h2 {
+    text-align: center;
+    color: #343a40;
+    margin-bottom: 25px;
+}
+
+input[type="text"], 
+input[type="email"], 
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 15px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.container button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 14px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.1em;
+    transition: background-color 0.3s;
+}
+
+.container button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.error-message {
+    color: #dc3545;
+    padding: 10px;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.success-message {
+    color: #155724;
+    padding: 10px;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+}
