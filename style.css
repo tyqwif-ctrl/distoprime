@@ -1,27 +1,53 @@
-/* style.css - Стилизация сайта */
+/* style.css - Стилизация сайта - Минималистичный и современный дизайн */
 
 /* ================================================= */
 /* 1. Глобальные стили и сброс (Reset) */
 /* ================================================= */
 
+:root {
+    /* Основная цветовая палитра: нейтральные, спокойные тона */
+    --color-background: #F4F6F9; /* Светлый фон */
+    --color-surface: #FFFFFF; /* Цвет карточек и модалок */
+    --color-text-primary: #333333; /* Основной текст */
+    --color-text-secondary: #6B7280; /* Второстепенный текст */
+    --color-primary: #3B82F6; /* Основной акцентный цвет (замена синему) */
+    --color-primary-hover: #2563EB;
+    --color-success: #10B981; /* Зеленый для успеха */
+    --color-danger: #EF4444; /* Красный для удаления/ошибок */
+    --color-warning: #F59E0B; /* Желтый для редактирования */
+
+    /* Тени для глубины */
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Современный и чистый шрифт */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f8f9fa;
-    color: #343a40;
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
     line-height: 1.6;
 }
 
 a {
-    color: #007bff;
+    color: var(--color-primary);
     text-decoration: none;
     transition: color 0.3s;
 }
 
 a:hover {
-    color: #0056b3;
+    color: var(--color-primary-hover);
     text-decoration: underline;
+}
+
+/* Общий стиль для всех кнопок */
+button, .button {
+    font-family: inherit;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
 }
 
 /* ================================================= */
@@ -29,96 +55,168 @@ a:hover {
 /* ================================================= */
 
 header {
-    background-color: #343a40;
-    color: white;
-    padding: 15px 40px;
+    /* Нейтральный, темный, но не черный фон */
+    background-color: var(--color-text-primary); 
+    color: var(--color-surface);
+    padding: 18px 60px; /* Увеличенные отступы */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-sm); /* Мягкая тень */
 }
+
+/* ================================================= */
+/* 2. Шапка (Header) и Навигация - УЛУЧШЕННЫЙ ТЕХНОЛОГИЧНЫЙ СТИЛЬ */
+/* ================================================= */
+
+/* Контейнер для выравнивания логотипа и текста */
+.logo-container a {
+    display: flex; /* Выравнивает логотип и текст в одну линию */
+    align-items: center;
+    gap: 12px; /* Расстояние между логотипом и текстом */
+    text-decoration: none;
+    color: var(--color-surface);
+}
+
+/* Стилизация изображения/иконки логотипа */
+.site-logo {
+    width: 32px; /* Размер иконки */
+    height: 32px;
+    filter: invert(100%); /* Делает логотип белым, если он чёрный (для PNG/JPG/SVG) */
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+/* Стилизация текстового названия */
+.site-title {
+    font-size: 1.65em;
+    font-weight: 700;
+    
+    /* Добавляем "технологический" шрифт (если не загружен, используется fallback) */
+    font-family: 'Consolas', 'Menlo', monospace; 
+    
+    letter-spacing: 2.5px; /* Увеличенное межбуквенное расстояние */
+    text-transform: uppercase;
+    
+    /* Эффект технологического подчеркивания */
+    border-bottom: 2px solid rgba(59, 130, 246, 0.5); /* Полупрозрачная синяя линия */
+    padding-bottom: 2px;
+}
+
+/* Эффект при наведении на всю область логотипа */
+.logo-container a:hover .site-logo {
+    opacity: 1; /* Логотип становится полностью видимым */
+}
+
+.logo-container a:hover .site-title {
+    color: #60A5FA; /* Текст становится светло-синим */
+    border-bottom: 2px solid var(--color-primary-hover); /* Подчеркивание становится более ярким */
+}
+
+/* Убедиться, что старые стили h1 не влияют на новый div */
+header h1, header h1 a {
+    display: none; /* Скрыть старые стили, если они присутствуют */
+}
+/* Чистый, строгий, геометрический стиль */
 
 header h1 {
     margin: 0;
-    font-size: 1.8em;
+    font-size: 1.8em; /* Чуть крупнее */
+    font-weight: 700; 
+    /* Строгий, современный шрифт (замените на доступный моноширинный/геометрический, если нужно) */
+    font-family: 'Courier New', Courier, monospace; 
 }
 
 header h1 a {
-    color: white;
+    color: var(--color-surface); /* Чистый белый цвет */
     text-decoration: none;
+    letter-spacing: 3px; /* Увеличенный межбуквенный интервал */
+    text-transform: uppercase; /* Все заглавные буквы */
+    transition: letter-spacing 0.3s ease;
+}
+
+header h1 a:hover {
+    letter-spacing: 5px; /* Небольшой эффект при наведении */
+    opacity: 0.9;
 }
 
 .user-status {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
 }
 
 .user-status p {
     margin: 0;
     font-size: 0.9em;
-    font-weight: 500;
+    font-weight: 400; /* Более легкий шрифт */
+    color: #CBD5E1; /* Светло-серый текст в шапке */
 }
 
-/* Общий стиль для кнопок в шапке (button) */
+/* Общий стиль для кнопок в шапке */
 .button {
-    padding: 8px 15px;
-    border-radius: 5px;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: background-color 0.3s;
+    padding: 10px 18px; /* Немного больше padding */
+    border-radius: 8px; /* Более мягкие углы */
+    font-weight: 600;
+    font-size: 0.9em;
+    text-transform: none; /* Убираем заглавные буквы для минимализма */
     white-space: nowrap;
-    color: white;
+    color: var(--color-surface);
 }
 
 .button-login {
-    background-color: #007bff;
+    background-color: var(--color-primary);
 }
 .button-login:hover {
-    background-color: #0056b3;
+    background-color: var(--color-primary-hover);
     text-decoration: none;
+    transform: translateY(-1px);
 }
 
 .button-register {
-    background-color: #28a745;
+    background-color: var(--color-success);
 }
 .button-register:hover {
-    background-color: #218838;
+    background-color: #059669;
     text-decoration: none;
+    transform: translateY(-1px);
 }
 
 .button-logout {
-    background-color: #dc3545;
+    background-color: var(--color-danger);
 }
 .button-logout:hover {
-    background-color: #c82333;
+    background-color: #DC2626;
+    transform: translateY(-1px);
 }
 
-
 /* ================================================= */
-/* 3. Поиск (Search Box) - Управляется React */
+/* 3. Поиск (Search Box) */
 /* ================================================= */
 
 .search-box {
-    padding: 15px 40px;
-    background-color: #e9ecef;
+    padding: 25px 40px;
+    background-color: var(--color-surface); /* Использовать цвет поверхности, а не серый */
     text-align: center;
+    border-bottom: 1px solid #E5E7EB; /* Тонкая линия разделитель */
 }
 
 #searchInput {
-    padding: 12px 15px;
+    padding: 12px 20px;
     width: 100%;
-    max-width: 500px;
-    border: 1px solid #ced4da;
-    border-radius: 25px;
+    max-width: 600px;
+    border: 1px solid #D1D5DB;
+    border-radius: 9999px; /* Полностью круглые края */
     font-size: 1em;
     outline: none;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    transition: all 0.3s ease;
+    background-color: var(--color-background); /* Легкий контраст с фоном search-box */
 }
 
 #searchInput:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); /* Красивое "кольцо" фокуса */
+    background-color: var(--color-surface);
 }
 
 
@@ -130,127 +228,130 @@ header h1 a {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 40px 20px;
-    gap: 30px;
+    padding: 50px 20px; /* Увеличенный отступ */
+    gap: 35px; /* Увеличенный разрыв между карточками */
 }
 
 .attraction-card {
-    background-color: white;
-    border: 1px solid #e0e0e0;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    background-color: var(--color-surface);
+    /* Убираем жесткий бордер, используем тень */
+    border: none; 
+    border-radius: 12px; /* Более мягкие, современные углы */
+    box-shadow: var(--shadow-md); 
     width: 320px;
     overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-    display: block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
     cursor: pointer;
 }
 
 .attraction-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px); /* Более легкий подъем */
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
 }
 
 .attraction-card img {
     width: 100%;
-    height: 220px;
+    height: 200px; /* Чуть меньшая высота для баланса */
     object-fit: cover;
 }
 
 .card-content {
-    padding: 15px;
+    padding: 20px;
+    flex-grow: 1;
 }
 
 .attraction-card h2 {
-    font-size: 1.3em;
-    color: #007bff;
+    font-size: 1.4em;
+    color: var(--color-primary);
     margin: 0 0 5px;
+    font-weight: 700;
 }
 
 .city {
-    color: #6c757d;
+    color: var(--color-text-secondary);
     font-size: 0.9em;
-    margin: 0 0 10px;
+    margin: 0 0 15px;
+    font-style: italic;
 }
 
 .attraction-card p {
     font-size: 0.95em;
     margin-top: 0;
+    color: var(--color-text-primary);
 }
 
 /* ================================================= */
 /* 5. Модальные окна (Details / Form) */
 /* ================================================= */
 
-/* Фон, затемняющий основной контент */
 .modal-backdrop {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); 
+    background-color: rgba(0, 0, 0, 0.5); /* Более мягкое затемнение */
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1000; 
+    z-index: 1000;
 }
 
-/* Контейнер самого модального окна */
 .modal-content {
-    background: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    max-width: 700px;
+    background: var(--color-surface);
+    padding: 40px; /* Увеличенные отступы */
+    border-radius: 15px;
+    max-width: 800px;
     width: 90%;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
     position: relative;
-    max-height: 90vh; 
+    max-height: 90vh;
     overflow-y: auto;
-    color: #343a40;
+    color: var(--color-text-primary);
 }
 
-/* Кнопка закрытия */
 .close-button {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 20px;
+    right: 20px;
     background: none;
     border: none;
-    font-size: 30px;
+    font-size: 35px;
     cursor: pointer;
-    color: #343a40;
+    color: var(--color-text-secondary); /* Нейтральный цвет */
     line-height: 1;
-    opacity: 0.7;
-    transition: opacity 0.2s;
+    opacity: 1;
+    transition: color 0.2s;
 }
 
 .close-button:hover {
-    opacity: 1;
+    color: var(--color-danger);
 }
 
-/* Заголовок в модальном окне */
 .modal-content h2 {
-    color: #007bff;
+    color: var(--color-text-primary);
     margin-top: 0;
-    margin-bottom: 20px;
-    font-size: 2em;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
+    margin-bottom: 25px;
+    font-size: 2.2em;
+    font-weight: 700;
+    border-bottom: 2px solid #E5E7EB; /* Более заметный разделитель */
+    padding-bottom: 15px;
 }
 
-/* Изображение в модальном окне */
 .modal-image-wrapper img {
     width: 100%;
-    max-height: 350px;
+    max-height: 400px;
     object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
 }
 
 .modal-body p {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     font-size: 1.05em;
+    line-height: 1.8;
 }
 
 /* ================================================= */
@@ -258,26 +359,27 @@ header h1 a {
 /* ================================================= */
 
 .card-footer {
-    padding: 0 15px 15px;
-    display: flex; /* Важно для выравнивания кнопок админа */
+    padding: 0 20px 20px;
+    display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
 }
 
 .button-details {
     display: block;
-    padding: 10px 0;
-    background-color: #007bff; 
+    width: 100%;
+    padding: 12px 0;
+    background-color: var(--color-primary);
     color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1em;
 }
 
 .button-details:hover {
-    background-color: #0056b3;
+    background-color: var(--color-primary-hover);
+    transform: translateY(-1px);
 }
 
 /* ================================================= */
@@ -286,26 +388,25 @@ header h1 a {
 
 .admin-actions {
     text-align: center;
-    padding: 15px 40px;
-    background-color: #fff;
-    border-bottom: 1px solid #e0e0e0;
+    padding: 30px 40px;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid #E5E7EB;
 }
 
 .button-add-new {
-    background-color: #28a745;
+    background-color: var(--color-success);
     color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1.1em;
-    font-weight: bold;
-    transition: background-color 0.3s;
-    display: inline-block;
+    padding: 14px 30px;
+    border-radius: 10px;
+    font-size: 1em;
+    font-weight: 600;
+    box-shadow: var(--shadow-sm);
 }
 
 .button-add-new:hover {
-    background-color: #218838;
+    background-color: #059669;
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
 }
 
 /* ================================================= */
@@ -313,30 +414,33 @@ header h1 a {
 /* ================================================= */
 
 /* Общий стиль для кнопок редактирования/удаления (маленькие) */
+.admin-actions-card {
+    display: flex;
+    gap: 8px;
+}
 .button-edit, .button-delete {
-    padding: 8px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    line-height: 1;
-    font-size: 1.1em;
-    transition: background-color 0.2s, transform 0.1s;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 600;
 }
 
 .button-edit {
-    background-color: #ffc107;
-    color: #343a40;
+    background-color: var(--color-warning);
+    color: var(--color-text-primary);
 }
 .button-edit:hover {
-    background-color: #e0a800;
+    background-color: #D97706;
+    transform: translateY(-1px);
 }
 
 .button-delete {
-    background-color: #dc3545;
+    background-color: var(--color-danger);
     color: white;
 }
 .button-delete:hover {
-    background-color: #c82333;
+    background-color: #DC2626;
+    transform: translateY(-1px);
 }
 
 /* ================================================= */
@@ -345,44 +449,52 @@ header h1 a {
 
 .attraction-form label {
     display: block;
-    margin-top: 15px;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #343a40;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .attraction-form input,
 .attraction-form textarea {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
+    padding: 12px;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
     box-sizing: border-box;
     font-size: 1em;
+    background-color: var(--color-background);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.attraction-form input:focus,
+.attraction-form textarea:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
 }
 
 .attraction-form textarea {
-    resize: vertical;
-    min-height: 100px;
+    min-height: 120px;
 }
 
 .button-save {
-    background-color: #007bff;
+    background-color: var(--color-primary);
     color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    padding: 14px 20px;
+    border-radius: 8px;
     font-size: 1.1em;
-    font-weight: bold;
-    margin-top: 20px;
-    width: 100%;
-    transition: background-color 0.3s;
+    font-weight: 700;
+    margin-top: 30px;
+    box-shadow: var(--shadow-sm);
 }
 
 .button-save:hover {
-    background-color: #0056b3;
+    background-color: var(--color-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
 }
 
 /* ================================================= */
@@ -390,65 +502,106 @@ header h1 a {
 /* ================================================= */
 
 .container {
-    max-width: 450px;
-    margin: 50px auto;
-    padding: 30px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 80px auto; /* Увеличенный верхний отступ */
+    padding: 40px;
+    background: var(--color-surface);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .container h2 {
     text-align: center;
-    color: #343a40;
-    margin-bottom: 25px;
+    color: var(--color-text-primary);
+    margin-bottom: 30px;
+    font-size: 2em;
 }
 
 input[type="text"], 
 input[type="email"], 
 input[type="password"] {
     width: 100%;
-    padding: 12px;
-    margin: 8px 0 15px;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
+    padding: 14px; /* Увеличенный padding */
+    margin: 8px 0 18px; /* Увеличенный нижний отступ */
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
     box-sizing: border-box;
     font-size: 1em;
+    background-color: var(--color-background);
 }
 
 .container button[type="submit"] {
-    background-color: #007bff;
+    background-color: var(--color-primary);
     color: white;
-    padding: 14px 20px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
+    padding: 15px 20px;
+    margin-top: 20px;
+    border-radius: 8px;
     font-size: 1.1em;
-    transition: background-color 0.3s;
+    font-weight: 700;
+    box-shadow: var(--shadow-sm);
 }
 
 .container button[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: var(--color-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
 }
 
 .error-message {
-    color: #dc3545;
-    padding: 10px;
-    background-color: #f8d7da;
-    border: 1px solid #f5c6cb;
-    border-radius: 5px;
-    margin-bottom: 15px;
+    color: var(--color-danger);
+    padding: 12px;
+    background-color: #FEF2F2; /* Очень светлый красный фон */
+    border: 1px solid #FCA5A5;
+    border-radius: 8px;
+    margin-bottom: 20px;
     text-align: center;
+    font-weight: 600;
 }
 
 .success-message {
-    color: #155724;
-    padding: 10px;
-    background-color: #d4edda;
-    border: 1px solid #c3e6cb;
-    border-radius: 5px;
-    margin-bottom: 15px;
+    color: #065F46;
+    padding: 12px;
+    background-color: #ECFDF5; /* Очень светлый зеленый фон */
+    border: 1px solid var(--color-success);
+    border-radius: 8px;
+    margin-bottom: 20px;
     text-align: center;
+    font-weight: 600;
+}
+
+/* ================================================= */
+/* 11. Адаптивность (Responsive Design) */
+/* ================================================= */
+
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .user-status {
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .search-box, .admin-actions {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .attractions-list {
+        padding: 30px 10px;
+    }
+
+    .attraction-card {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .modal-content {
+        padding: 25px;
+    }
 }

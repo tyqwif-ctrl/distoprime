@@ -45,7 +45,12 @@ $attractions_json = json_encode($attractions, JSON_UNESCAPED_UNICODE);
 </head>
 <body>
     <header>
-        <h1><a href="index.php">🏛️ Достопримечательности</a></h1>
+        <div class="logo-container">
+        <a href="index.php">
+            <img src="images/logo.svg" alt="" class="site-logo">
+            <span class="site-title">Достопримечательности</span> 
+        </a>
+    </div>
         
         <div class="user-status">
             <?php if (isset($_SESSION['username'])): ?>
